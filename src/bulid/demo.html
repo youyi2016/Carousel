@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<link rel="stylesheet" href="../css/carousel.css" />
+		<style>
+			.carousel-wrap {
+				margin: 40px auto;				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<div class="carousel-wrap">
+				<div id="img-index" style="left:0">				
+					<img src="../images/default.png" data-src="../images/1.jpg"/> 
+					<img src="../images/default.png" data-src="../images/2.jpg"/> 
+					<img src="../images/default.png" data-src="../images/3.jpg"/> 
+					<img src="../images/default.png" data-src="../images/4.jpg"/> 
+					<img src="../images/default.png" data-src="../images/5.jpg"/> 	
+					<img src="../images/default.png" data-src="../images/6.jpg"/> 									
+				</div>
+				<ol id="circles">					
+					<li index="0"></li>
+					<li index="1"></li>
+					<li index="2"></li>
+					<li index="3"></li>
+					<li index="4"></li>
+					<li index="5"></li>					
+				</ol>
+				<a class="arrow" id="prev">
+					<img src="../images/banner_left_1.png" alt="图片加载失败"/>
+				</a>
+				<a class="arrow" id="next">
+					<img src="../images/banner_right_2.png"  alt="图片加载失败"/>
+				</a>
+			</div>
+		</div>
+
+		<script src="../js/util.js" ></script>
+		<script src="../js/carousel.js"></script>
+		<script>			
+//			var handler = {
+//	      		message: "event handled",
+//	      		handleClick: function(name, event) {
+//	      			alert(this.message);
+//	      		}
+//	      	};
+//	      	
+//	      	var btn = document.getElementById("my-btn");
+//	      	EventUtil.addHandler(btn, "click", handler.handleClick.bind(handler));
+//	      	
+		 var carousel = new carousel({
+		 	ele: $("#img-index"),
+		 	circles: $("#circles"),
+		 	intervalTime: 2000,
+		 	defaultImgUrl: "../images/default.png",
+		 	imgLength: 440
+		 });
+		 		
+		</script>
+	</body>
+</html>

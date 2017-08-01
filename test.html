@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">确定</button><iframe src="https://ghbtns.com/github-btn.html?user=DIYgod&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+		<script>
+		var util = {
+			 maps: {
+			  'click #btn': 'clickBtn'
+		     },
+		     
+		     stop: function() {
+		     	console.log("stop....");
+		     },
+		     
+			 clickBtn: function(event)　{
+				var e = event;
+				var target = e.target || e.srcElement;
+				console.log(target.id);             
+				this.stop();
+			 },
+			 
+			 _scanEventsMap: function(maps, isOn) {
+			  	
+		    	var delegateEventSplitter = /^(\S+)\s*(.*)$/;
+                var bind = isOn ? this._delegate.bind(this) : this._undelegate.bind(this);
+//	     	        this._delegate('click', "#btn", this["clickBtn"]);
+//	     	        bind('click', "#btn", "clickBtn");                   
+	            for (var keys in maps) {	            	
+	                if (maps.hasOwnProperty(keys)) {
+	                    var matchs = keys.match(delegateEventSplitter);
+	                    bind(matchs[1], matchs[2], maps[keys]);
+	                }
+	            }
+		    },  
+		    
+			 _delegate: function(name, selector, func) {
+	            var ele = document.querySelector(selector),
+	                that = this,
+	                func = this[func];
+	                console.log(func);
+		    	ele.addEventListener(name, function(event) {
+				   var e = event || window.event;   				    	
+		    		func.apply(that, arguments);
+		    	}, false);
+		    	//EventUtil.addHandler($("#next"), "click", "clickNextBtn");	
+	        },
+	       
+	       _undelegate: function(name, selector, func) {
+	            var ele = $(selector);
+		    	ele.removeEventListener(name, func, false);
+            },
+          
+          _init: function() {
+          	 this._scanEventsMap(this.maps, true);
+          }
+		}
+		
+		util._init();
+		
+		var a = {					
+			 b: function() {
+			    console.log(this);
+		     },
+		    
+		     f: function() {			
+			  var c = this.b;
+			  c();
+			}
+		};
+//		
+//		a.b();
+//		a.f();
+
+//          var a = {
+//          	t: "333"       	
+//          };
+//    
+//			var b = function() {
+//				this.a = a;
+//			    console.log(this);
+//		    };
+//		    
+//		     var f = function() {			
+//			    var c = b;
+//			    c();
+//			};
+//		    b();
+//		    f();
+		
+//		var c = function() {
+//			    console.log(this);
+//		      }
+     
+//    var condition = false;    
+//    if (condition) {
+//	      function bfun(num) {
+//	      	return num + 100;
+//	      }
+//    }
+//    else {
+//	      function bfun(num) {
+//	      	return num + 200;
+//	      }
+//	  }	  
+	//  console.log( afun(100) );//300
+	  
+//  var p=[];   
+//  var condition = false;  
+// if (condition) {
+//	     var bfun = function(num) {
+//	      	return num + 100;
+//	      }
+//  }
+//  else {
+//	     var bfun = function(num) {
+//	     	var a = num;
+//	      	return num + 200;
+//	     }
+//	}	
+//	    var bfun = function(num) {
+//	     	var a = num;
+//	      	return num + 200;
+//	     }
+//	    
+//	    var cfun = bfun;
+//	    bfun = function(num) {
+//	    	return num*1000;
+//	    } ;
+	    
+//	    bfun = null;
+//      
+//      bfun = function(num) {
+//	    	return num*1000;
+//	    } ;
+//	   
+//      var cfun = bfun;
+//      bfun.a = 7777;
+//      console.log(bfun.a);//777
+//      bfun = function(num) {
+//	      	return num + 200;
+//	     }
+//	   console.log(typeof bfun);//function
+//	   
+//	   console.log(bfun.a);//undefined
+//     console.log( bfun(100) );	//10000    
+//     console.log( cfun(200) );
+//	   console.log(cfun.a);//777
+        
+//     var  ttt = 0;
+//     ttt.a = 7;
+//     console.log(ttt.a);//undefined
+       
+//    var _name = "The window";
+		var object = {
+		    _name : "my object",
+		    getNameFunc : function() {
+		        
+		        var that = this;
+                var a = function() {
+		           console.log("value:"+this._name);//undefined		
+		        };		        
+		         a();                
+		    }
+		};
+//        console.log(object.getNameFunc());
+				
+		var object = {
+		    _name : "my object",
+		    getNameFunc : function() {
+		         
+		        return function() {
+//		        	this._name = "yyy";
+		        	console.log(this);//window
+		            return this._name;//undefined		
+		        };
+                              
+		   }
+		};
+         // console.log(object.getNameFunc()());
+          
+          
+            var a=10;
+			function test(){
+				a=5;
+				alert(a);
+				alert(this.a);
+				var a;
+				alert(this.a);
+				alert(a);
+			}
+			
+//			test(); 
+//			new test();
+			// 5 10 10 5
+			//5 undefined undefined 5
+			
+			function sum(a,b) {
+				return a+b;
+			}
+		     var a =5,
+		         b = 6;
+//		    console.log(sum.apply(this,a,b));
+            function sum() {
+            	return ;
+            }
+            
+            function A() {}
+            function B() {}
+           
+            A.prototype = new B();
+            var a = new A();
+            var b = new B();
+            console.log(b.isPrototypeOf(B));
+		</script>
+	</body>
+</html>

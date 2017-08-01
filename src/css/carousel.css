@@ -1,0 +1,101 @@
+
+.carousel-wrap {
+	position: relative;
+	/*top: 70px;*/
+	width: 680px;
+	height: 450px;
+	overflow: hidden;
+}
+
+#img-index {
+	position: absolute;
+	overflow: hidden;
+	height: 450px;
+	z-index: 1;
+}
+
+#img-index img {	
+	width: 680px;
+	height: 450px;
+	float: left;
+}
+
+#img-index img:first-child {
+   margin-left: 0; 
+}
+
+#circles {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	list-style: none;
+	z-index: 2;	
+}
+
+#circles li {
+	width: 6px;
+	height: 6px;
+	display: inline-block;
+	margin-left: 8px;
+	border-radius: 10px;
+	border: solid 1px #fff;
+	box-sizing: border-box;	
+}
+
+ol {
+	padding: 0;
+}
+
+ol li {
+	cursor: pointer;
+}
+
+#items {
+	position: absolute;
+	top: 450px;
+	margin-left: 250px;
+}
+
+.arrow {
+	position: absolute;
+	cursor: pointer;
+	width : 150px;
+	height: 300px;
+	z-index: 2;
+}
+
+#next,
+#prev {
+	 position: absolute;
+	 width: 20px;
+     height: 20px;
+     top: 50%;
+     margin-top: -10px; 
+}
+
+#next {
+	right: 4px;
+}
+
+#prev {
+	left: 8px;
+}
+
+.light {
+	background: #fff;
+}
+
+#img-index img,
+.carousel-wrap {
+    width: 440px;
+    height: 200px;
+}
+
+#prev img,
+#next img {
+    width: 15px;
+    height: 25px;
+}
+
+ 
